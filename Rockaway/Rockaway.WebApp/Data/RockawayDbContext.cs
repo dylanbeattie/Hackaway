@@ -19,6 +19,4 @@ public class RockawayDbContext : DbContext {
 		modelBuilder.Model.GetEntityTypes().ToList().ForEach(e => e.SetTableName(e.DisplayName()));
 		SampleData.Populate(modelBuilder);
 	}
-
-	
 }

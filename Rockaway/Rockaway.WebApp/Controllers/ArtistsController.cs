@@ -22,9 +22,9 @@ namespace Rockaway.WebApp.Controllers
         // GET: Artists
         public async Task<IActionResult> Index()
         {
-              return _context.Artists != null ? 
-                          View(await _context.Artists.ToListAsync()) :
-                          Problem("Entity set 'RockawayDbContext.Artists'  is null.");
+            return _context.Artists != null ?
+                        View(await _context.Artists.ToListAsync()) :
+                        Problem("Entity set 'RockawayDbContext.Artists'  is null.");
         }
 
         // GET: Artists/Details/5
@@ -151,14 +151,14 @@ namespace Rockaway.WebApp.Controllers
             {
                 _context.Artists.Remove(artist);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ArtistExists(Guid id)
         {
-          return (_context.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
