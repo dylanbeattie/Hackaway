@@ -22,8 +22,9 @@ public class Venue {
 
 	[MaxLength(100)]
 	[Unicode(false)]
-	[RegularExpression("^[a-z0-9-]{2,100}$", ErrorMessage = "Slug must be 2-100 characters and can only contain a-z, 0-9 and the hyphen - character")]
-	public string Slug { get; set; }
+	[RegularExpression("^[a-z0-9-]{2,100}$",
+		ErrorMessage = "Slug must be 2-100 characters and can only contain a-z, 0-9 and the hyphen - character")]
+	public string Slug { get; set; } = String.Empty;
 
 	[MaxLength(500)]
 	public string Address { get; set; } = String.Empty;

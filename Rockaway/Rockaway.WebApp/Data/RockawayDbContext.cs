@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Rockaway.WebApp.Data.Sample;
 
 // ReSharper disable StringLiteralTypo
 
 namespace Rockaway.WebApp.Data;
 
-public class RockawayDbContext : DbContext {
+public class RockawayDbContext : IdentityDbContext {
 	// We must declare a constructor that takes a DbContextOptions<RockawayDbContext>
 	// if we want to use Asp.NET to configure our database connection and provider.
 	public RockawayDbContext(DbContextOptions<RockawayDbContext> options) : base(options) { }
