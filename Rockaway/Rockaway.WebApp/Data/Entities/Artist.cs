@@ -1,10 +1,6 @@
 ﻿namespace Rockaway.WebApp.Data.Entities;
 
 public class Artist {
-	private readonly Guid id;
-	private readonly string name;
-	private readonly string description;
-	private readonly string slug;
 	public Guid Id { get; set; }
 	[MaxLength(100)]
 	public string Name { get; set; } = String.Empty;
@@ -18,9 +14,9 @@ public class Artist {
 	public Artist() { }
 
 	public Artist(Guid id, string name, string description, string slug) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.slug = slug;
+		this.Id = id;
+		this.Name = name;
+		this.Description = description;
+		this.Slug = slug;
 	}
 }
