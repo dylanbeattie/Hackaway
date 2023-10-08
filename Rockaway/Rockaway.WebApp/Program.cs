@@ -1,3 +1,5 @@
+using Microsoft.Data.Sqlite;
+using Rockaway.WebApp.Data;
 using Rockaway.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IStatusReporter, StatusReporter>();
-
+var sqlite = new SqliteConnection("Data Source=:memory:");
+sqlite.Open();
+builder.Services.AddDbContext<RockawayDbContext>(options => options.UseSqlite(sqlite));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
