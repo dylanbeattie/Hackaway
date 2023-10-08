@@ -8,7 +8,8 @@ namespace Rockaway.WebApp.Tests;
 public class EndpointTests {
 	[Fact]
 	public async Task Status_Endpoint_Returns_Success() {
-		var factory = new WebApplicationFactory<Program>();
+		var db = await TestDatabase.CreateAsync();
+		var factory = new WebApplicationFactory<Program>().WithTestDatabase(db);
 		var client = factory.CreateClient();
 		var result = await client.GetAsync("/status");
 		result.EnsureSuccessStatusCode();
@@ -27,7 +28,8 @@ public class EndpointTests {
 
 	[Fact]
 	public async Task Status_Endpoint_Returns_Correct_Json() {
-		var factory = new WebApplicationFactory<Program>();
+		var db = await TestDatabase.CreateAsync();
+		var factory = new WebApplicationFactory<Program>().WithTestDatabase(db);
 		var client = factory.WithWebHostBuilder(builder => builder.ConfigureServices(services => {
 			services.AddScoped<IStatusReporter>(_ => new FakeStatusReporter());
 		})).CreateClient();
