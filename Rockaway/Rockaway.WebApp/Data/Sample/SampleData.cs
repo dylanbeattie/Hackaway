@@ -1,4 +1,6 @@
-﻿namespace Rockaway.WebApp.Data.Sample
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Rockaway.WebApp.Data.Sample
 {
     public partial class SampleData
     {
@@ -11,6 +13,7 @@
             // to create a show for a venue which doesn't exist yet.
             modelBuilder.Entity<Artist>().HasData(Artists.AllArtists);
             modelBuilder.Entity<Venue>().HasData(Venues.AllVenues);
+            modelBuilder.Entity<IdentityUser>().HasData(Users.Admin);
         }
     }
 }
