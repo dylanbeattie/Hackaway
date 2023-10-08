@@ -14,7 +14,7 @@ public static class RockawayDbContextExtensions {
 			builder.Services.AddDbContext<RockawayDbContext>(options => options.UseSqlite(sqlite));
 		} else {
 			Log.Information("Running Rockaway.WebApp in SQL Server mode");
-			var connectionString = builder.Configuration.GetConnectionString("rockaway-sql-server");
+			var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
 			builder.Services.AddDbContext<RockawayDbContext>(options => options.UseSqlServer(connectionString));
 		}
 		return builder;
