@@ -13,6 +13,14 @@ sqlite.Open();
 builder.Services.AddDbContext<RockawayDbContext>(options => options.UseSqlite(sqlite));
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope()) {
+	using (var db = scope.ServiceProvider.GetService<RockawayDbContext>()) {
+		lock (db!) {
+			db.Database.EnsureCreatedAsync();
+		}
+	}
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment()) {
 	app.UseExceptionHandler("/Error");

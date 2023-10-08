@@ -7,6 +7,7 @@
 			// otherwise SQL will throw a foreign key constraint if e.g. we try
 			// to create a show for a venue which doesn't exist yet.
 			modelBuilder.Entity<Artist>().HasData(Artists.AllArtists);
+			modelBuilder.Entity<Venue>().HasData(Venues.AllVenues);
 		}
 	}
 }
