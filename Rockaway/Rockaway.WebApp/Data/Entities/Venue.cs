@@ -43,5 +43,7 @@ public class Venue {
 	[Url]
 	public string? WebsiteUrl { get; set; }
 
-	public string FullName => $"{Name}, {City}, {CountryCode}";
+	public List<Show> Shows { get; set; } = new();
+
+	public string FullName => $"{Name}, {City}, {Country.GetName(CountryCode)}";
 }

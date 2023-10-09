@@ -1,3 +1,5 @@
+using System.Net.Sockets;
+
 namespace Rockaway.WebApp.Data.Entities;
 
 public class Artist {
@@ -18,5 +20,18 @@ public class Artist {
 		this.Name = name;
 		this.Description = description;
 		this.Slug = slug;
+	}
+
+	public List<Show> HeadlineShows { get; set; } = new();
+	public List<SupportSlot> SupportSlots { get; set; } = new();
+
+	public Show BookShow(Venue venue, DateTime date) {
+		var show = new Show {
+			Venue = venue,
+			Date = date,
+			HeadlineArtist = this
+		};
+		this.HeadlineShows.Add(show);
+		return show;
 	}
 }

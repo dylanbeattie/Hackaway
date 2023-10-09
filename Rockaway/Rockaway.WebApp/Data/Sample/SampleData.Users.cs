@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
+
 namespace Rockaway.WebApp.Data.Sample;
 
 public partial class SampleData {
@@ -17,7 +18,7 @@ public partial class SampleData {
 				PhoneNumberConfirmed = true,
 				SecurityStamp = Guid.NewGuid().ToString()
 			};
-			Admin.PasswordHash = hasher.HashPassword(Admin, "p@ssw0rd");
+			Admin.PasswordHash = hasher.HashPassword(Admin, "Top5ecret!");
 		}
 		public static IdentityUser Admin { get; }
 	}

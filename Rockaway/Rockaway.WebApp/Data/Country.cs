@@ -269,7 +269,7 @@ public class Country {
 		Code = code;
 		Name = name;
 	}
-	public static string GetName(string code) => iso3166[code];
+	public static string GetName(string code) => iso3166.GetValueOrDefault(code) ?? $"Unknown country code '{code}'";
 	public static Country? FromCode(string countryCode) => AllCountries.FirstOrDefault(c => c.Code == countryCode);
 	public static bool IsValidCode(string countryCode) => iso3166.ContainsKey(countryCode);
 }
