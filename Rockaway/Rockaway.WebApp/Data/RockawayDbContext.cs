@@ -20,7 +20,9 @@ public class RockawayDbContext : IdentityDbContext<IdentityUser> {
 		base.OnModelCreating(modelBuilder);
 		// Override EF Core's default table naming (which pluralizes entity names)
 		// and use the same names as the C# classes instead
-		modelBuilder.Model.GetEntityTypes().ToList().ForEach(e => e.SetTableName(e.DisplayName()));
+		var rockawayEntities = modelBuilder.Model.GetEntityTypes()
+			.Where(e => e.ClrType.Namespace == typeof(Artist).Namespace);
+		foreach (var entity in rockawayEntities) entity.SetTableName(entity.DisplayName());
 
 		modelBuilder.Entity<TicketOrder>(entity => {
 			// Store enums in the database as their string name
@@ -43,6 +45,7 @@ public class RockawayDbContext : IdentityDbContext<IdentityUser> {
 			);
 			entity.Navigation(show => show.Venue).AutoInclude();
 			entity.Navigation(show => show.HeadlineArtist).AutoInclude();
+			entity.Ignore(show => show.SupportArtists);
 		});
 
 		modelBuilder.Entity<Artist>(entity => {
