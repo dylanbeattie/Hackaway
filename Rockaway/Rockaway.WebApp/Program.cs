@@ -1,8 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Rockaway.WebApp.Data;
 using Rockaway.WebApp.Services;
 using Serilog;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 var builder = WebApplication.CreateBuilder(args);
@@ -28,4 +27,3 @@ app.MapRazorPages();
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapGet("/status", (IStatusReporter sr) => sr.GetStatus());
 app.Run();
-

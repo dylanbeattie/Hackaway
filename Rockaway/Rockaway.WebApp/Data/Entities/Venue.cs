@@ -1,4 +1,4 @@
-﻿namespace Rockaway.WebApp.Data.Entities;
+namespace Rockaway.WebApp.Data.Entities;
 
 public class Venue {
 
