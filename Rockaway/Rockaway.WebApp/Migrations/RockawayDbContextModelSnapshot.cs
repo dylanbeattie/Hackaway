@@ -266,7 +266,7 @@ namespace Rockaway.WebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Artist");
+                    b.ToTable("Artist", (string)null);
 
                     b.HasData(
                         new
@@ -503,7 +503,7 @@ namespace Rockaway.WebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Venue");
+                    b.ToTable("Venue", (string)null);
 
                     b.HasData(
                         new

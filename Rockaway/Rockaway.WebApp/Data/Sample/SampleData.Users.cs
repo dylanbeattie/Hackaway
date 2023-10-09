@@ -9,6 +9,7 @@ public partial class SampleData {
 		static Users() {
 			var hasher = new PasswordHasher<IdentityUser>();
 			Admin = new() {
+				Id = "rockaway-sample-admin-user",
 				Email = "admin@rockaway.dev",
 				NormalizedEmail = "admin@rockaway.dev".ToUpperInvariant(),
 				UserName = "admin@rockaway.dev",

@@ -65,6 +65,6 @@ public class RockawayDbContext : IdentityDbContext<IdentityUser> {
 
 		SampleData.Populate(modelBuilder);
 
+		modelBuilder.Entity<IdentityUser>().HasData(SampleData.Users.Admin);
 	}
-
 }
