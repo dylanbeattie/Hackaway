@@ -1,10 +1,10 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using Rockaway.WebApp.Controllers;
+using Rockaway.WebApp.Areas.Admin.Controllers;
 using Rockaway.WebApp.Data.Entities;
 using Shouldly;
 
-namespace Rockaway.WebApp.Tests;
+namespace Rockaway.WebApp.Tests.Admin;
 
 public class VenuesControllerTests {
 	[Fact]
@@ -12,7 +12,7 @@ public class VenuesControllerTests {
 		var c = new VenuesController(null!);
 		var post = new Venue { CountryCode = "XX" };
 		var result = await c.Create(post) as ViewResult;
-		result.StatusCode.ShouldBe((int)HttpStatusCode.BadRequest);
+		result.StatusCode.ShouldBe((int) HttpStatusCode.BadRequest);
 	}
 
 	[Fact]
